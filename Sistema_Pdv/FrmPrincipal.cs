@@ -27,5 +27,11 @@ namespace Sistema_Pdv
             cadastro.frmFuncionario frm = new cadastro.frmFuncionario();
             frm.ShowDialog(); 
         }
+
+        private void MenuCargo_Click(object sender, EventArgs e)
+        {
+            cadastro.frmCargo frm = new cadastro.frmCargo();
+            frm.ShowDialog();
+        }
     }
 }

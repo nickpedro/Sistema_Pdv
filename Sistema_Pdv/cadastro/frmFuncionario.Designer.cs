@@ -103,6 +103,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(366, 20);
             this.txtNome.TabIndex = 6;
+            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtEndereco
             // 
@@ -132,6 +133,7 @@
             this.grid.Location = new System.Drawing.Point(16, 187);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
+            this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid.Size = new System.Drawing.Size(822, 228);
             this.grid.TabIndex = 12;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
@@ -166,6 +168,7 @@
             this.btnExcluir.TabIndex = 15;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnEditar
             // 

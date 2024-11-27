@@ -31,26 +31,26 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.MenuPrincipal = new System.Windows.Forms.MenuStrip();
             this.MenuCadastro = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuProdutos1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuMovimentacoes = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuRelDespesas = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuSair = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuFuncionario = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCargo = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuFornecedor = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuProdutos1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuProdutos2 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuEstoque = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuMovimentacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuFluxoCaixa = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuLancaVenda = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuEntradaSaida = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuDespesas = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuRelDespesas = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuRelProdutos = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuRelVendas = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuRelMovimento = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuRelEntradaSaida = new System.Windows.Forms.ToolStripMenuItem();
             this.despesasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSair = new System.Windows.Forms.ToolStripMenuItem();
             this.img04 = new System.Windows.Forms.PictureBox();
             this.img02 = new System.Windows.Forms.PictureBox();
             this.img03 = new System.Windows.Forms.PictureBox();
@@ -90,49 +90,6 @@
             this.MenuCadastro.Size = new System.Drawing.Size(111, 23);
             this.MenuCadastro.Text = "Cadastros";
             // 
-            // MenuProdutos1
-            // 
-            this.MenuProdutos1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuProdutos2,
-            this.MenuEstoque});
-            this.MenuProdutos1.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuProdutos1.Name = "MenuProdutos1";
-            this.MenuProdutos1.Size = new System.Drawing.Size(101, 23);
-            this.MenuProdutos1.Text = "Produtos";
-            // 
-            // MenuMovimentacoes
-            // 
-            this.MenuMovimentacoes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuFluxoCaixa,
-            this.MenuLancaVenda,
-            this.MenuEntradaSaida,
-            this.MenuDespesas});
-            this.MenuMovimentacoes.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuMovimentacoes.Name = "MenuMovimentacoes";
-            this.MenuMovimentacoes.Size = new System.Drawing.Size(151, 23);
-            this.MenuMovimentacoes.Text = "Movimentações";
-            // 
-            // MenuRelDespesas
-            // 
-            this.MenuRelDespesas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuRelProdutos,
-            this.MenuRelVendas,
-            this.MenuRelMovimento,
-            this.MenuRelEntradaSaida,
-            this.despesasToolStripMenuItem1});
-            this.MenuRelDespesas.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuRelDespesas.Name = "MenuRelDespesas";
-            this.MenuRelDespesas.Size = new System.Drawing.Size(111, 23);
-            this.MenuRelDespesas.Text = "Relatório";
-            // 
-            // MenuSair
-            // 
-            this.MenuSair.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuSair.Name = "MenuSair";
-            this.MenuSair.Size = new System.Drawing.Size(61, 23);
-            this.MenuSair.Text = "Sair";
-            this.MenuSair.Click += new System.EventHandler(this.MenuSair_Click);
-            // 
             // MenuFuncionario
             // 
             this.MenuFuncionario.Name = "MenuFuncionario";
@@ -157,12 +114,23 @@
             this.MenuCargo.Name = "MenuCargo";
             this.MenuCargo.Size = new System.Drawing.Size(198, 24);
             this.MenuCargo.Text = "Cargo";
+            this.MenuCargo.Click += new System.EventHandler(this.MenuCargo_Click);
             // 
             // MenuFornecedor
             // 
             this.MenuFornecedor.Name = "MenuFornecedor";
             this.MenuFornecedor.Size = new System.Drawing.Size(198, 24);
             this.MenuFornecedor.Text = "Fornecedor";
+            // 
+            // MenuProdutos1
+            // 
+            this.MenuProdutos1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuProdutos2,
+            this.MenuEstoque});
+            this.MenuProdutos1.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuProdutos1.Name = "MenuProdutos1";
+            this.MenuProdutos1.Size = new System.Drawing.Size(101, 23);
+            this.MenuProdutos1.Text = "Produtos";
             // 
             // MenuProdutos2
             // 
@@ -175,6 +143,18 @@
             this.MenuEstoque.Name = "MenuEstoque";
             this.MenuEstoque.Size = new System.Drawing.Size(158, 24);
             this.MenuEstoque.Text = "Estoque";
+            // 
+            // MenuMovimentacoes
+            // 
+            this.MenuMovimentacoes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuFluxoCaixa,
+            this.MenuLancaVenda,
+            this.MenuEntradaSaida,
+            this.MenuDespesas});
+            this.MenuMovimentacoes.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuMovimentacoes.Name = "MenuMovimentacoes";
+            this.MenuMovimentacoes.Size = new System.Drawing.Size(151, 23);
+            this.MenuMovimentacoes.Text = "Movimentações";
             // 
             // MenuFluxoCaixa
             // 
@@ -199,6 +179,19 @@
             this.MenuDespesas.Name = "MenuDespesas";
             this.MenuDespesas.Size = new System.Drawing.Size(248, 24);
             this.MenuDespesas.Text = "Despesas";
+            // 
+            // MenuRelDespesas
+            // 
+            this.MenuRelDespesas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuRelProdutos,
+            this.MenuRelVendas,
+            this.MenuRelMovimento,
+            this.MenuRelEntradaSaida,
+            this.despesasToolStripMenuItem1});
+            this.MenuRelDespesas.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuRelDespesas.Name = "MenuRelDespesas";
+            this.MenuRelDespesas.Size = new System.Drawing.Size(111, 23);
+            this.MenuRelDespesas.Text = "Relatório";
             // 
             // MenuRelProdutos
             // 
@@ -229,6 +222,14 @@
             this.despesasToolStripMenuItem1.Name = "despesasToolStripMenuItem1";
             this.despesasToolStripMenuItem1.Size = new System.Drawing.Size(288, 24);
             this.despesasToolStripMenuItem1.Text = "Despesas ";
+            // 
+            // MenuSair
+            // 
+            this.MenuSair.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuSair.Name = "MenuSair";
+            this.MenuSair.Size = new System.Drawing.Size(61, 23);
+            this.MenuSair.Text = "Sair";
+            this.MenuSair.Click += new System.EventHandler(this.MenuSair_Click);
             // 
             // img04
             // 

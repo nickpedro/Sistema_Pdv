@@ -32,8 +32,10 @@ namespace Sistema_Pdv.cadastro
         {
             LimparFoto();
             Listar();
+            ListarCargos();
             FormatarGD();
             alterouImagem = "não";
+            cbCargo.Text = string.Empty;
         }
 
         private void FormatarGD()//Formatando os dados dentro da grid visivel.
@@ -51,7 +53,7 @@ namespace Sistema_Pdv.cadastro
             grid.Columns[6].Visible = false;
         }
 
-        private void DesabilitarCampos()
+        private void DesabilitarCampos()//Desabilita os campos
         {
             txtNome.Enabled = false;
             txtCPF.Enabled = false;
@@ -59,7 +61,7 @@ namespace Sistema_Pdv.cadastro
             txtEndereco.Enabled = false;
             cbCargo.Enabled = false;
         }
-        private void LimparCampos()
+        private void LimparCampos()//Limpa os dados anteriores
         {
             txtNome.Text = "";
             txtCPF.Text = "";
@@ -68,14 +70,29 @@ namespace Sistema_Pdv.cadastro
             cbCargo.Text = "";
         }
 
-        private void btnNovo_Click(object sender, EventArgs e)
+        private void ListarCargos()//Metodo Lista os cargos registrados.
+        {
+            con.AbrirConexao();
+            string sql = "SELECT * FROM cargos ORDER BY cargo asc";
+            using (SqlCommand cmd = new SqlCommand(sql, con.conn))
+            {
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cbCargo.DataSource = dt;
+                cbCargo.DisplayMember = "cargo";
+                con.FecharConexao();
+            }
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)//Novo cadastro
         {
             habilitarCampos();
             LimparCampos();
             txtNome.Focus();
         }
 
-        private void Listar()//Listar os dados do banco na grid
+        private void Listar()//Listar e Atualizar os dados do banco na grid
         {
             con.AbrirConexao();
             string sql = "SELECT * FROM funcionarios ORDER BY nome asc";
@@ -91,6 +108,7 @@ namespace Sistema_Pdv.cadastro
             }
         }
 
+        //Botão Salvar
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             con.AbrirConexao();
@@ -109,6 +127,12 @@ namespace Sistema_Pdv.cadastro
                 {
                     MessageBox.Show("Preencha o campo CPF", "Cadastro funcionários", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCPF.Focus();
+                    return;
+                }
+                if (txtCelular.Text == "(  )      -" || txtCelular.Text.Length < 14)
+                {
+                    MessageBox.Show("Preencha o campo Celular", "Cadastro funcionários", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCelular.Focus();
                     return;
                 }
 
@@ -177,7 +201,7 @@ namespace Sistema_Pdv.cadastro
         }
 
 
-        private void habilitarCampos()
+        private void habilitarCampos()//Habilita os campos
         {
             btnSalvar.Enabled = true;
             txtNome.Enabled = true;
@@ -229,6 +253,7 @@ namespace Sistema_Pdv.cadastro
 
         }
 
+        //Botão Cancelar
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             btnNovo.Enabled = true;
@@ -239,6 +264,7 @@ namespace Sistema_Pdv.cadastro
             LimparCampos();
         }
 
+        //Botão Editar
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (txtNome.Text.ToString().Trim() == "")
@@ -361,6 +387,37 @@ namespace Sistema_Pdv.cadastro
                 alterouImagem = "não";
 
             }
+        }
+
+        //Botão Excluir
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            con.AbrirConexao();
+            using(SqlCommand cmd = new SqlCommand("DELETE FROM funcionarios WHERE id = @id", con.conn))
+            {
+                var res = MessageBox.Show("Deseja realmente excluir o registro?", "Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                    con.FecharConexao();
+
+                    Listar();
+                    MessageBox.Show("Registro Excluido com Sucesso!", " Cadastro funcionários", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnNovo.Enabled = true;
+                    btnSalvar.Enabled = false;
+                    btnEditar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                }
+                LimparCampos();  
+                DesabilitarCampos();
+                
+            }
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
